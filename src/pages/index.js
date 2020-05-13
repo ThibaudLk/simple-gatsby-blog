@@ -25,7 +25,7 @@ const IndexPage = ({ data }) => (
       itemLayout="horizontal"
       dataSource={data.allMarkdownRemark.edges}
       renderItem={({ node }) => (
-        <List.Item extra=<Link to={node.frontmatter.slug}>Read more</Link>>
+        <List.Item extra=<Link to={node.frontmatter.slug}>Lire plus</Link>>
           <List.Item.Meta
             title={
               <span style={{ fontSize: "2rem" }}>

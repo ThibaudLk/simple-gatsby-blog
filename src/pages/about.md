@@ -1,5 +1,6 @@
 ---
-title: À propos
+templateKey: about-page
+title: À propix
 image: assets/apropos1920.jpg
 heading: HEADING BABY
 ---
