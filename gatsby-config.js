@@ -3,15 +3,90 @@ module.exports = {
     title: `Simple Blog avec Gatsby`,
     description: `Un simple blog à customiser au besoin`,
     author: `DevDurable`,
+    menuLinks: [
+      {
+        name: "Accueil",
+        link: "/"
+      },
+      {
+        name: "À propos",
+        link: "/about"
+      },
+      {
+        name: "Articles",
+        link: "/articles"
+      }
+    ]
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify-cms`,
+    'gatsby-plugin-styled-components',
     {
       resolve: `gatsby-source-filesystem`,
-      options: { name: `blog`, path: `${__dirname}/blog/` },
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
     },
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `assets`,
+        path: `${__dirname}/static/assets`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: { 
+        name: `mdArticles`, 
+        path: `${__dirname}/mdArticles/` 
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: { 
+        name: `mdPages`, 
+        path: `${__dirname}/mdPages/` 
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          `gatsby-remark-component`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          // `gatsby-remark-prismjs`,
+          // `gatsby-remark-copy-linked-files`,
+          // `gatsby-remark-smartypants`,
+          {
+            resolve: `gatsby-remark-external-links`,
+            options: {
+              target: `_blank`
+            }
+          },
+          {
+            resolve: `@raae/gatsby-remark-oembed`,
+            options: {
+              providers: {
+                include: ['Twitter', 'YouTube']
+              }
+            }
+          }
+        ],
+      },
+    },
     {
       resolve: "gatsby-plugin-less",
       options: {
@@ -25,13 +100,6 @@ module.exports = {
       options: {
         // Activate less files
         style: true,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
       },
     },
     `gatsby-transformer-sharp`,

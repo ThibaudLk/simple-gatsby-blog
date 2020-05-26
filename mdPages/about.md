@@ -1,7 +1,7 @@
 ---
-templateKey: about-page
+slug: about
 title: À propix
-image: assets/apropos1920.jpg
+image: apropos1920.jpg
 heading: HEADING BABY
 ---
 Bonjour, je suis le créateur de ce **blog**, et voici mon histoire :

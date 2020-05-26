@@ -40,4 +40,7 @@ module.exports = {
   "@padding-md": "24px", // small containers and buttons
   "@padding-sm": "16px", // Form controls and items
   "@padding-xs": "12px", // small items
+  "@layout-header-background": "rgba(0, 0, 0, .0)",
+  "@layout-header-padding": "0px",
+  "@menu-item-icon-margin-right": "0px",
 }

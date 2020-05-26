@@ -13,22 +13,22 @@ collections:
     label: "Pages"
     files:
       # La page d'accueil
-      - file: "src/pages/index.md"
-        label: "Page d'accueil"
-        name: "index"
-        fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
-          - { label: "Titre", name: "title", widget: "string" }
-          - { label: "Image", name: "image", widget: image }
-          - { label: "Heading", name: "heading", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" }
+      # - file: "mdPages/index.md"
+      #   label: "Page d'accueil"
+      #   name: "index"
+      #   fields:
+      #     - {label: "Slug", name: "slug", widget: "hidden", default: "index"}
+      #     - { label: "Titre", name: "title", widget: "string" }
+      #     - { label: "Image", name: "image", widget: image }
+      #     - { label: "Heading", name: "heading", widget: "string" }
+      #     - { label: "Body", name: "body", widget: "markdown" }
       
       # La page à propos
-      - file: "src/pages/about.md"
+      - file: "mdPages/about.md"
         label: "À propos"
         name: "about"
         fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
+          - {label: "Slug", name: "slug", widget: "hidden", default: "about"}
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Image", name: "image", widget: image }
           - { label: "Heading", name: "heading", widget: "string" }
@@ -36,9 +36,9 @@ collections:
 
           
   # Collection representant les articles du blog
-  - name: blog
+  - name: articles
     label: Articles
-    folder: blog
+    folder: mdArticles
     create: true
     fields:
       - { name: slug, label: Slug }

@@ -3,10 +3,14 @@ const path = require(`path`)
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
-  return graphql(
-    `
+  const articleTemplate = path.resolve(`./src/templates/article.js`)
+
+  const articlesQuery = graphql(`
       {
-        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+        allMarkdownRemark(
+          filter: { fileAbsolutePath: { glob: "**/mdArticles/*.md" } }
+          sort: { fields: [frontmatter___date], order: DESC }
+          ) {
           edges {
             node {
               frontmatter {
@@ -17,9 +21,8 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       }
-    `
-  ).then(result => {
-    // console.log(JSON.stringify(result, null, 2))
+  `).then(result => {
+    console.log(JSON.stringify(result, null, 2))
     const posts = result.data.allMarkdownRemark.edges
 
     posts.forEach((post, index) => {
@@ -28,7 +31,7 @@ exports.createPages = ({ graphql, actions }) => {
 
       createPage({
         path: post.node.frontmatter.slug,
-        component: path.resolve(`./src/templates/article.js`),
+        component: articleTemplate,
         context: {
           slug: post.node.frontmatter.slug,
           next,
@@ -37,4 +40,39 @@ exports.createPages = ({ graphql, actions }) => {
       })
     })
   })
+
+  const pagesQuery = graphql(`
+    {
+      allMarkdownRemark(
+        filter: { fileAbsolutePath: { glob: "**/mdPages/*.md" } }
+        ) {
+        edges {
+          node {
+            frontmatter {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `).then(result => {
+    if (result.errors) {
+      return Promise.reject(result.errors)
+    }
+    console.log(JSON.stringify(result, null, 2))
+
+    // Pour chaque markdown on créé la page qui lui est associée
+    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+      createPage({
+        path: node.frontmatter.slug,
+        component: path.resolve(
+          `src/templates/${String(node.frontmatter.slug)}.js`
+        ),
+        context: {}, // additional data can be passed via context
+      })
+    })
+  })
+
+  return Promise.all([articlesQuery, pagesQuery]);
+
 }

@@ -11,7 +11,7 @@ const IndexPage = ({ data }) => (
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
 
     {/* ça serait cool d'implementer une List avec Antd lorsque ça fonctionnera */}
-    {/* {data.allMarkdownRemark.edges.map(({ node }) =>
+    {data.allMarkdownRemark.edges.map(({ node }) =>
       <div key={node.id}>
         <span style={{ fontSize: "2rem" }}>
           <Link to={node.frontmatter.slug}>{node.frontmatter.title}</Link>
@@ -19,9 +19,9 @@ const IndexPage = ({ data }) => (
         <p style={{ paddingTop: "16px", lineHeight: "1.25" }}>{node.excerpt}</p>
         <Divider />
       </div>
-    )} */}
+    )}
 
-    <List
+    {/* <List
       itemLayout="horizontal"
       dataSource={data.allMarkdownRemark.edges}
       renderItem={({ node }) => (
@@ -40,7 +40,7 @@ const IndexPage = ({ data }) => (
           />
         </List.Item>
       )}
-    />
+    /> */}
 
   </Layout>
 )
@@ -52,7 +52,10 @@ export const query = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: { glob: "**/mdArticles/*.md" } }
+      sort: { fields: [frontmatter___date], order: DESC }
+      ) {
       edges {
         node {
           id

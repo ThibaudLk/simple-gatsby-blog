@@ -11,12 +11,12 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 const ButtonGroup = Button.Group
 
 const Article = ({ data, pageContext }) => {
-    const { title, date } = data.markdownRemark.frontmatter
-    const __html = data.markdownRemark.html
-    const { prev, next } = pageContext
+  const { title, date } = data.markdownRemark.frontmatter
+  const __html = data.markdownRemark.html
+  const { prev, next } = pageContext
 
-    return (
-        <Layout>
+  return (
+    <Layout>
       <SEO title={title} description={data.markdownRemark.excerpt} />
       <p>{date}</p>
       <div dangerouslySetInnerHTML={{ __html }} />
@@ -41,7 +41,7 @@ const Article = ({ data, pageContext }) => {
         )}
       </ButtonGroup>
     </Layout>
-    );
+  );
 }
 
 
@@ -57,5 +57,5 @@ export const query = graphql`
     }
   }
 `
- 
+
 export default Article;
