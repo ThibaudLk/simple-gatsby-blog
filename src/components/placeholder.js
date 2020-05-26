@@ -40,7 +40,7 @@ const Placeholder = ({ className, children }) => (
   />
 )
 const StyledPlaceholder = styled(Placeholder)`
-  width: 100vw;
+  width: 100%;
   height: 400px;
   display: flex;
   align-items: normal;

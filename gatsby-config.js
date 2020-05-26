@@ -19,37 +19,8 @@ module.exports = {
     ]
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-netlify-cms`,
-    'gatsby-plugin-styled-components',
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `assets`,
-        path: `${__dirname}/static/assets`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: { 
-        name: `mdArticles`, 
-        path: `${__dirname}/mdArticles/` 
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: { 
-        name: `mdPages`, 
-        path: `${__dirname}/mdPages/` 
-      },
-    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -88,6 +59,30 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: { 
+        name: `mdArticles`, 
+        path: `${__dirname}/mdArticles/` 
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: { 
+        name: `mdPages`, 
+        path: `${__dirname}/mdPages/` 
+      },
+    },
+    `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-styled-components',
+    `gatsby-plugin-netlify-cms`,
+    {
       resolve: "gatsby-plugin-less",
       options: {
         modifyVars: require("./src/theme/antd.js"),
@@ -102,8 +97,6 @@ module.exports = {
         style: true,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
