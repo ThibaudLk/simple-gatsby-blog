@@ -1,6 +1,6 @@
 ---
 slug: about
-title: À propix
+title: À propos
 image: apropos1920.jpg
 heading: HEADING BABY
 ---
