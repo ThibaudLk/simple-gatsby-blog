@@ -1,10 +1,14 @@
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
 import React from "react"
 import { Link, StaticQuery, graphql } from "gatsby"
 
 import { List, Avatar, Divider } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
+/** 
+ * Component qui permet d'afficher l'auteur en fin d'article
+ * => à rendre personalisable par la suite
+**/
 const EcritPar = () => (
   <StaticQuery
     query={graphql`
@@ -36,9 +40,9 @@ const EcritPar = () => (
 )
 
 
-EcritPar.propTypes = {
-  prenom: PropTypes.string,
-  nom: PropTypes.string,
-}
+// EcritPar.propTypes = {
+//   prenom: PropTypes.string,
+//   nom: PropTypes.string,
+// }
 
 export default EcritPar

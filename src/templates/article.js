@@ -10,6 +10,10 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 
 const ButtonGroup = Button.Group
 
+/**
+ * Composant permettant d'afficher un article
+ */
+
 const Article = ({ data, pageContext }) => {
   const { title, date } = data.markdownRemark.frontmatter
   const __html = data.markdownRemark.html

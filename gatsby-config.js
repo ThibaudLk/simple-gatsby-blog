@@ -2,21 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Simple Blog avec Gatsby`,
     description: `Un simple blog à customiser au besoin`,
-    author: `DevDurable`,
-    menuLinks: [
-      {
-        name: "Accueil",
-        link: "/"
-      },
-      {
-        name: "À propos",
-        link: "/about"
-      },
-      {
-        name: "Articles",
-        link: "/articles"
-      }
-    ]
+    author: `DevDurable`
   },
   plugins: [
     `gatsby-transformer-sharp`,
@@ -26,6 +12,7 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-remark-component`,
+          'gatsby-remark-relative-images',
           {
             resolve: `gatsby-remark-images`,
             options: {

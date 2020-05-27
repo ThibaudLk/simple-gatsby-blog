@@ -11,17 +11,7 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-      # La page d'accueil
-      # - file: "mdPages/index.md"
-      #   label: "Page d'accueil"
-      #   name: "index"
-      #   fields:
-      #     - {label: "Slug", name: "slug", widget: "hidden", default: "index"}
-      #     - { label: "Titre", name: "title", widget: "string" }
-      #     - { label: "Image", name: "image", widget: image }
-      #     - { label: "Heading", name: "heading", widget: "string" }
-      #     - { label: "Body", name: "body", widget: "markdown" }
-      
+            
       # La page à propos
       - file: "mdPages/about.md"
         label: "À propos"
